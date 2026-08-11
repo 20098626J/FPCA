@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/Arrays/Primitive_and_Object_Arrays</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q1. Why arrays</text>
+    </name>
+    <questiontext format="html">
+      <text>Why are arrays used in programming?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>To store a single value of any type</text>
+      <feedback format="html">
+        <text>Arrays store multiple values, not just one.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>To store many values of the same type efficiently</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To store only numbers in sequential order</text>
+      <feedback format="html">
+        <text>Arrays can hold many data types, not only numbers.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>To replace all loops in code</text>
+      <feedback format="html">
+        <text>Loops often work together with arrays; arrays do not replace loops.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q2. Reusing n in loop</text>
+    </name>
+    <questiontext format="html">
+      <text>What happens when you read a number into the same variable n repeatedly in a loop?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>Each number is stored permanently</text>
+      <feedback format="html">
+        <text>A single variable holds only one value at a time.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>The previous number is overwritten</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The numbers are all added automatically</text>
+      <feedback format="html">
+        <text>Only if you add them to a sum explicitly.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A syntax error occurs</text>
+      <feedback format="html">
+        <text>This is valid Java syntax.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q3. Declare int[10]</text>
+    </name>
+    <questiontext format="html">
+      <text>In Java, how do you declare an array of 10 integers?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>int numbers = new int(10);</text>
+      <feedback format="html">
+        <text>Parentheses are not used for array creation.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>int numbers[] = new int[10];</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>numbers = new int[10];</text>
+      <feedback format="html">
+        <text>Missing the type in the declaration.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>int numbers = [10];</text>
+      <feedback format="html">
+        <text>Invalid Java syntax.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q4. Default int value</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the default value for elements in a new int array?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>1</text>
+      <feedback format="html">
+        <text>Default is not 1.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>null</text>
+      <feedback format="html">
+        <text>Only object references default to null.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>0</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>undefined</text>
+      <feedback format="html">
+        <text>Java assigns defined default values.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q5. Access elements</text>
+    </name>
+    <questiontext format="html">
+      <text>How are array elements accessed in Java?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>Using the get() method</text>
+      <feedback format="html">
+        <text>Java arrays do not have a get() method.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>By index starting at 0</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>By key names</text>
+      <feedback format="html">
+        <text>That applies to maps, not arrays.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Randomly</text>
+      <feedback format="html">
+        <text>Elements are accessed by index positions.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q6. Print numbers[2]</text>
+    </name>
+    <questiontext format="html">
+      <text>What will System.out.println(numbers[2]) print if numbers[2] has been set to 18?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>0</text>
+      <feedback format="html">
+        <text>0 would be the default before assignment.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>2</text>
+      <feedback format="html">
+        <text>2 is the index, not the value.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>18</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>null</text>
+      <feedback format="html">
+        <text>Only object arrays can contain null references.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q7. length meaning</text>
+    </name>
+    <questiontext format="html">
+      <text>What does numbers.length return?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>The last index used</text>
+      <feedback format="html">
+        <text>The last index is length - 1.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>The total capacity of the array</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The number of elements currently populated</text>
+      <feedback format="html">
+        <text>Java does not track the populated count separately.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The sum of all elements</text>
+      <feedback format="html">
+        <text>You must compute sums explicitly.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q8. Rule for input data</text>
+    </name>
+    <questiontext format="html">
+      <text>What is the main rule when dealing with input data, as described in the slides?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>Never store input data</text>
+      <feedback format="html">
+        <text>You generally want to keep inputs for later use.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Always lose old input</text>
+      <feedback format="html">
+        <text>We aim not to lose inputs.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Never lose input data</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Avoid loops with input</text>
+      <feedback format="html">
+        <text>Loops are typically used to process input and arrays.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q9. String[] declaration</text>
+    </name>
+    <questiontext format="html">
+      <text>Which of the following is a valid declaration for an array of String objects?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>String words = new String(4);</text>
+      <feedback format="html">
+        <text>Invalid: missing array brackets and uses parentheses.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>String[] words = new String[4];</text>
+      <feedback format="html">
+        <text>Valid declaration.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>String words[] = {&quot;Dog&quot;, &quot;Cat&quot;};</text>
+      <feedback format="html">
+        <text>Valid initialization with literals.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Both B and C</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q10. Out-of-range access</text>
+    </name>
+    <questiontext format="html">
+      <text>What happens if an array index outside its range is accessed?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>Java assigns a default value</text>
+      <feedback format="html">
+        <text>No default assignment beyond bounds.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Java ignores the statement</text>
+      <feedback format="html">
+        <text>An exception is thrown.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Java throws an ArrayIndexOutOfBoundsException</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>The program exits successfully</text>
+      <feedback format="html">
+        <text>The exception interrupts normal flow.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q11. Print all elements</text>
+    </name>
+    <questiontext format="html">
+      <text>How do you print all elements of an array named words?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>System.out.println(words);</text>
+      <feedback format="html">
+        <text>Prints the reference, not the contents.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>for (int i = 0; i &lt; words.length; i++) { System.out.println(words[i]); }</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>System.out.println(words[i]);</text>
+      <feedback format="html">
+        <text>Missing the loop.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>print(words.all());</text>
+      <feedback format="html">
+        <text>Invalid Java code.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q12. Types storable</text>
+    </name>
+    <questiontext format="html">
+      <text>What kind of data can arrays in Java store?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>Only primitive data types</text>
+      <feedback format="html">
+        <text>Arrays can also store objects.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Only objects</text>
+      <feedback format="html">
+        <text>Arrays can also store primitives.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Both primitive types and objects</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Only Strings</text>
+      <feedback format="html">
+        <text>Strings are just one kind of object.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q13. Default in Person[]</text>
+    </name>
+    <questiontext format="html">
+      <text>In an array Person[] friends = new Person[4], what does each element initially contain?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>A new Person object</text>
+      <feedback format="html">
+        <text>Objects are not automatically constructed.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A random value</text>
+      <feedback format="html">
+        <text>Java uses well-defined defaults.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>null</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Empty</text>
+      <feedback format="html">
+        <text>There is no special Empty value in Java.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q14. Average on partial array</text>
+    </name>
+    <questiontext format="html">
+      <text>If an array results has 15 elements but only 12 are used, how should you calculate the average?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>Divide by 15</text>
+      <feedback format="html">
+        <text>This would give an incorrect average.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Divide by 12</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Divide by results.length()</text>
+      <feedback format="html">
+        <text>length gives capacity, not usage.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Java automatically adjusts</text>
+      <feedback format="html">
+        <text>Java does not track number of used elements.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q15. Method call on element</text>
+    </name>
+    <questiontext format="html">
+      <text>In a Person array, what does friends[i].printFirstName() do?</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text/>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <penalty>0.3333333</penalty>
+    <hidden>0</hidden>
+    <single>true</single>
+    <shuffleanswers>true</shuffleanswers>
+    <answernumbering>abc</answernumbering>
+    <correctfeedback format="html">
+      <text>Correct.</text>
+    </correctfeedback>
+    <partiallycorrectfeedback format="html">
+      <text>Partially correct.</text>
+    </partiallycorrectfeedback>
+    <incorrectfeedback format="html">
+      <text>Incorrect.</text>
+    </incorrectfeedback>
+    <shownumcorrect>true</shownumcorrect>
+    <answer fraction="0" format="html">
+      <text>Creates a new Person</text>
+      <feedback format="html">
+        <text>No object construction occurs here.</text>
+      </feedback>
+    </answer>
+    <answer fraction="100" format="html">
+      <text>Calls a method on the Person object stored at index i</text>
+      <feedback format="html">
+        <text>This is correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Accesses an element without printing anything</text>
+      <feedback format="html">
+        <text>The method name indicates it prints.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Causes a compile error</text>
+      <feedback format="html">
+        <text>Valid if the method exists and the element is non-null.</text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>

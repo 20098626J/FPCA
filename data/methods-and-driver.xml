@@ -1,0 +1,708 @@
+<?xml version="1.0" ?>
+<quiz>
+  <question type="category">
+    <category>
+      <text>Methods and Driver</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q1: void keyword</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What keyword in Java defines a method that returns nothing?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;empty&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – empty is not a Java keyword; it describes strings or collections.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;none&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – none is not valid Java syntax.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;void&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – void specifies that no value is returned.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;null&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – null means no object reference, not a return type.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q2: return type</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which part of a method defines the data type returned?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;Parameter list&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – defines inputs, not outputs.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;Return type&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – declares the kind of data the method returns.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Method name&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – identifies the method but not its return data.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Body&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – contains the code, not the return type.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q3: method header order</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What is the correct order for a method header?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;Return type → parameter list → method name&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – the name follows the return type.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Parameter list → return type → method name&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – parameters go last.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;Return type → method name → parameter list&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – that’s the Java method signature order.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Method name → return type → parameter list&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – the return type must appear before the method name.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q4: return keyword</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which keyword is used to send a value back from a method?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;break&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – break exits a loop or switch, not a method.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;yield&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – yield is used in switch expressions (Java 14+).&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;continue&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – continue skips to the next loop iteration.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;return&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – return sends data back to the caller.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q5: purpose of methods</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What is the main purpose of using methods?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;To make code run faster&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – performance is not the main goal of methods.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;To reduce memory usage&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – methods do not directly control memory allocation.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;To increase lines of code&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – methods reduce repetition and simplify programs.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;To reuse code and improve structure&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – methods encourage modular, reusable design.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q6: naming convention</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What is the method name style convention in Java?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;ALL_CAPS&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – used for constants, not methods.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;snake_case&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – used in Python, not Java.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;camelCase with verbs&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – Java methods use camelCase verbs like printResult().&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;PascalCase&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – reserved for class names, not methods.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q7: parameters</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which part of a method lists inputs it can receive?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>&lt;p&gt;Parameter list&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – the parameter list defines inputs.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Body&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – contains statements, not parameters.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Return type&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – defines the type of data returned, not inputs.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Signature&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – includes the parameter list but is not itself a list of inputs.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q8: driver contains</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What must a Driver class contain?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;Only static methods&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – driver may also contain instance methods.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;A Scanner object&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – a Scanner is optional.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;A main() method&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – every Java program begins execution in main().&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;An import statement&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – not required unless external packages are used.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q9: driver purpose</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What is the purpose of the Driver class?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>&lt;p&gt;To run and test other classes&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – the driver runs and coordinates the program.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;To hold all method definitions&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – functionality belongs in other classes.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;To compile code&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – the compiler handles compilation.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;To store constants&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – constants belong in a separate utility class.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q10: object creation</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What statement creates an object from a class?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;Calculator() = new calc;&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – invalid Java syntax.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;Calculator calc = new Calculator();&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – this is the standard syntax for object creation.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;new Calculator = calc();&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – assignment and constructor order are reversed.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;calc.Calculator();&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – constructors are not called on existing objects.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q11: main method meaning</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;In Java, what does 'public static void main' mean?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;A loop statement&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – main() is not a loop.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;Starting point of the program&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – main() marks where execution begins.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;A method returning true/false&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – main() returns nothing.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;A variable declaration&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – it defines a method, not a variable.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q12: non-static call</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which method type requires an object to call it?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;Main method&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – special entry method that is static.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Private method&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – access modifier doesn’t dictate object requirement.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;Non-static method&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – these require an object instance to invoke.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Static method&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – static methods can be called on the class directly.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q13: return number</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What will 'return number * 2;' do?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;Print double the number&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – return doesn’t print anything.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Multiply twice and stop&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – multiplication happens once; the statement returns the result.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Store result in a variable&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – it only returns a value to the caller.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;Send back twice the number&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – returns double the input value.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q14: boolean return type</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What data type should a method use to return true or false?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;char&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – stores characters, not logical results.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;int&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – integers can’t directly represent true/false.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;String&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – holds text, not logical values.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;boolean&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – boolean stores true or false values.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q15: boolean naming</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which is a valid Boolean method name?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;booleanCheck&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – naming does not follow Java style.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;isEven&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – Boolean methods often start with is, has, or can.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;doEven&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – implies an action, not a check.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;checkNumber&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – does not follow the Boolean naming convention.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q16: overloading truth</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which statement about overloading is TRUE?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>&lt;p&gt;Same method name, different parameter list&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – overloading requires different parameters.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Different method name, same parameters&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – that is not overloading.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Same method body reused&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – overloading involves separate methods.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Same name, different return type only&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – Java does not allow overloading by return type alone.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q17: overloading pair</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which of these pairs correctly shows overloading?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>&lt;p&gt;addNum(int, int) and addNum(double, double)&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – same name, different parameter types.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;addNum(int) and addNum(int)&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – identical signatures are not overloaded.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;addNum() and addNum()&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – identical signatures are not overloaded.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;addNum() and addNumSame()&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – different names, not overloaded.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q18: boolean return</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What does a Boolean method return?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;1 or 0&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – numeric, not Boolean values.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;true or false&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – boolean methods return logical true/false values.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Boolean object&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – primitive boolean returns true/false, not an object.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;Yes or No&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – text strings, not Boolean literals.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q19: static before main</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What keyword must appear before main() in a Driver class?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100">
+      <text>&lt;p&gt;static&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – static allows main() to run without an instance.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;this&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – refers to current object, not class-level context.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;return&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – return cannot precede a method declaration.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;void&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – indicates no return value, but not required first.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q20: valid header</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Which Java method header is valid?&lt;/p&gt;</text>
+    </questiontext>
+    <shuffleanswers>1</shuffleanswers>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="0">
+      <text>&lt;p&gt;public add(int a, int b)&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – missing return type before method name.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;int add(a int, b int)&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – parameter declarations are invalid.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="100">
+      <text>&lt;p&gt;public int add(int a, int b)&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Correct – includes access modifier, return type, name, and parameters.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+    <answer fraction="0">
+      <text>&lt;p&gt;method add(int, int)&lt;/p&gt;</text>
+      <feedback format="html">
+        <text>&lt;p&gt;Incorrect – method is not a Java keyword.&lt;/p&gt;</text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>
