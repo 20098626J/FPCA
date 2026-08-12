@@ -25,7 +25,9 @@ source-repository head
 
 library
   exposed-modules:
+      Adts
       Lib
+      Xml
   other-modules:
       Paths_fp_quiz_ass
   autogen-modules:
