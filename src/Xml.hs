@@ -12,6 +12,10 @@ module Xml
   ( Xml(..)
   , Attribute
   , parseXml
+  , childrenNamed
+  , firstChildNamed
+  , attributeValue
+  , textOf
   ) where
 
 import Data.Char (chr, isAlphaNum, isDigit, isSpace)
@@ -157,3 +161,33 @@ isNameChar c = isAlphaNum c || c == '_' || c == '-' || c == ':' || c == '.'
 -- | A short piece of the input, for use in error messages.
 preview :: String -> String
 preview input = take 40 (dropWhile isSpace input)
+
+-- Walking a parsed tree --------------------------------------------------
+
+-- | The direct children of an element that have the given name.
+childrenNamed :: String -> Xml -> [Xml]
+childrenNamed wanted (Element _ _ children) =
+  [ child | child <- children, hasName wanted child ]
+childrenNamed _ (Text _) = []
+
+-- | The first child with the given name, if the element has one.
+firstChildNamed :: String -> Xml -> Maybe Xml
+firstChildNamed wanted node =
+  case childrenNamed wanted node of
+    []        -> Nothing
+    (child:_) -> Just child
+
+-- | The value of one of an element's attributes, if it has that attribute.
+attributeValue :: String -> Xml -> Maybe String
+attributeValue wanted (Element _ attributes _) = lookup wanted attributes
+attributeValue _       (Text _)                = Nothing
+
+-- | All of the text underneath a node, joined together.
+textOf :: Xml -> String
+textOf (Text text)             = text
+textOf (Element _ _ children)  = concat [ textOf child | child <- children ]
+
+-- | Does this node happen to be an element with the given name?
+hasName :: String -> Xml -> Bool
+hasName wanted (Element name _ _) = name == wanted
+hasName _      (Text _)           = False
