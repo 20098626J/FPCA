@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A small quiz file written to exercise the category rules.
+
+     The file sets a default category of Introduction. Q1 and Q2 have no
+     category of their own and so inherit it. Q3 and Q4 name their own
+     category and override the default. -->
+<quiz>
+  <question type="category">
+    <category>
+      <text>$course$/top/Introduction</text>
+    </category>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q1. Compiling Java</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What does the Java compiler produce from a .java file?&lt;/p&gt;</text>
+    </questiontext>
+    <generalfeedback format="html">
+      <text>Source code is compiled to bytecode, which the JVM then runs.</text>
+    </generalfeedback>
+    <defaultgrade>1</defaultgrade>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>A .class file containing bytecode</text>
+      <feedback format="html">
+        <text>Correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A .exe file that the operating system runs directly</text>
+      <feedback format="html">
+        <text>Java does not compile straight to a native executable.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>Nothing, because Java is never compiled</text>
+      <feedback format="html">
+        <text>Java is compiled before it is run.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <name>
+      <text>Q2. Main method</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;Where does a Java program begin running?&lt;/p&gt;</text>
+    </questiontext>
+    <defaultgrade>1</defaultgrade>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>At the main method</text>
+      <feedback format="html">
+        <text>Correct.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>At the first method in the file</text>
+      <feedback format="html">
+        <text>Position in the file makes no difference.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>At the constructor of the first class</text>
+      <feedback format="html">
+        <text>A constructor only runs when an object is created.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <category>
+      <text>$course$/top/Loops</text>
+    </category>
+    <name>
+      <text>Q3. Counting loop</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;How many times does for (int i = 0; i &lt; 5; i++) run its body?&lt;/p&gt;</text>
+    </questiontext>
+    <defaultgrade>2</defaultgrade>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>5</text>
+      <feedback format="html">
+        <text>Correct, i takes the values 0 to 4.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>4</text>
+      <feedback format="html">
+        <text>The loop starts at 0, so there are 5 iterations.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>6</text>
+      <feedback format="html">
+        <text>The loop stops before i reaches 5.</text>
+      </feedback>
+    </answer>
+  </question>
+  <question type="multichoice">
+    <category>
+      <text>$course$/top/Loops</text>
+    </category>
+    <name>
+      <text>Q4. While versus do while</text>
+    </name>
+    <questiontext format="html">
+      <text>&lt;p&gt;What is the difference between a while loop and a do while loop?&lt;/p&gt;</text>
+    </questiontext>
+    <defaultgrade>2</defaultgrade>
+    <single>true</single>
+    <answernumbering>abc</answernumbering>
+    <answer fraction="100" format="html">
+      <text>A do while loop always runs its body at least once</text>
+      <feedback format="html">
+        <text>Correct, the condition is tested after the body.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>A while loop always runs its body at least once</text>
+      <feedback format="html">
+        <text>A while loop tests its condition first, so the body may never run.</text>
+      </feedback>
+    </answer>
+    <answer fraction="0" format="html">
+      <text>There is no difference between them</text>
+      <feedback format="html">
+        <text>They differ in when the condition is tested.</text>
+      </feedback>
+    </answer>
+  </question>
+</quiz>
