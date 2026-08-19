@@ -18,27 +18,27 @@ main = do
   hSetEncoding stdout utf8
   putStrLn "Quiz bank importer"
   putStrLn "=================="
-  reportAll quizFiles
+  contents <- readAll quizFiles
+  case parseQuizFiles (zip quizFiles contents) of
+    Left err        -> putStrLn ("could not build the question bank: " ++ err)
+    Right questions -> reportBank questions
 
--- | Report on each quiz file in turn.
-reportAll :: [FilePath] -> IO ()
-reportAll []           = return ()
-reportAll (path:paths) = do
-  report path
-  reportAll paths
-
--- | Read one quiz file and say what was found in it.
-report :: FilePath -> IO ()
-report path = do
+-- | Read every quiz file, keeping them in the order they were given.
+readAll :: [FilePath] -> IO [String]
+readAll []           = return []
+readAll (path:paths) = do
   contents <- readUtf8 path
+  rest     <- readAll paths
+  return (contents : rest)
+
+-- | Say what ended up in the question bank.
+reportBank :: [Question] -> IO ()
+reportBank questions = do
   putStrLn ""
-  putStrLn path
-  case parseQuiz contents of
-    Left err        -> putStrLn ("  could not be read: " ++ err)
-    Right questions -> do
-      putStrLn ("  questions: " ++ show (length questions))
-      putLines [ "  " ++ show number ++ ". " ++ summarise question
-               | (number, question) <- numbered questions ]
+  putStrLn ("questions in the bank: " ++ show (length questions))
+  putStrLn ""
+  putLines [ show number ++ ". " ++ summarise question
+           | (number, question) <- numbered questions ]
 
 -- | One line describing a question.
 summarise :: Question -> String

@@ -9,10 +9,11 @@
 -- questions have to be walked in order.
 module Parse
   ( parseQuiz
+  , parseQuizFiles
   ) where
 
 import Adts
-import Data.Char (isSpace)
+import Data.Char (isAlpha, isSpace)
 import Data.List (isPrefixOf)
 import Xml
 
@@ -25,6 +26,21 @@ parseQuiz contents =
       case root of
         Element "quiz" _ _ -> collectQuestions Nothing (childrenNamed "question" root)
         _                  -> Left "the root element of a quiz file must be <quiz>"
+
+-- | Read several quiz files into one question bank.
+--
+-- Each file is given as its name together with its contents.  The name is
+-- only used to say which file an error came from, which keeps this
+-- function pure: the reading of the files themselves stays in the driver.
+parseQuizFiles :: [(FilePath, String)] -> Either String [Question]
+parseQuizFiles [] = Right []
+parseQuizFiles ((path, contents):rest) =
+  case parseQuiz contents of
+    Left err        -> Left (path ++ ": " ++ err)
+    Right questions ->
+      case parseQuizFiles rest of
+        Left err        -> Left err
+        Right remaining -> Right (questions ++ remaining)
 
 -- | Walk the questions in order, remembering the default category most
 -- recently set by a @\<question type=\"category\"\>@ element.
@@ -73,19 +89,28 @@ dropCoursePrefix name
   | "top/"      `isPrefixOf` name = dropCoursePrefix (drop 4 name)
   | otherwise                     = name
 
--- | Build one question, given the category it belongs to.
+-- | Build one question, given the default category of the file it is in.
 buildQuestion :: Category -> String -> Xml -> Either String Question
-buildQuestion category typeName element =
+buildQuestion defaultCategory typeName element =
   case textIn "questiontext" element of
     Nothing   -> Left ("question " ++ describeQuestion element ++ " has no question text")
     Just text ->
       Right Question { questionType     = readQuestionType typeName
-                     , questionCategory = category
+                     , questionCategory = categoryFor defaultCategory element
                      , questionName     = textIn "name" element
                      , questionText     = text
                      , questionAnswers  = answersIn element
                      , questionFeedback = textIn "generalfeedback" element
                      }
+
+-- | The category rule from the brief: a question that names its own
+-- category uses that one, and a question that does not inherit the default
+-- category of its quiz file.  Either way it ends up with exactly one.
+categoryFor :: Category -> Xml -> Category
+categoryFor defaultCategory element =
+  case categoryIn element of
+    Nothing       -> defaultCategory
+    Just category -> category
 
 -- | Recognise the one question type we have to support.
 readQuestionType :: String -> QuestionType
@@ -134,10 +159,26 @@ directText element =
 -- | Drop HTML markup.  The sample files escape their markup inside the
 -- text, so by this point @&lt;p&gt;@ has already become @\<p\>@ and would
 -- otherwise show up in the generated Markdown.
+--
+-- A @\<@ only begins a tag when a name follows it and a @\>@ closes it
+-- later.  Without that check, answer text such as
+-- @for (int i = 0; i \< words.length; i++)@ would lose everything from
+-- the @\<@ onwards, because there is no @\>@ for it to stop at.
 stripTags :: String -> String
-stripTags []         = []
-stripTags ('<':rest) = stripTags (drop 1 (dropWhile (/= '>') rest))
-stripTags (c:cs)     = c : stripTags cs
+stripTags []       = []
+stripTags ('<':rest)
+  | startsTag rest = stripTags (drop 1 (dropWhile (/= '>') rest))
+  | otherwise      = '<' : stripTags rest
+stripTags (c:cs)   = c : stripTags cs
+
+-- | Does this text, which sits just after a @\<@, begin an HTML tag?
+startsTag :: String -> Bool
+startsTag text = beginsWithLetter (dropSlash text) && elem '>' text
+  where
+    dropSlash ('/':rest)     = rest
+    dropSlash rest           = rest
+    beginsWithLetter (c:_)   = isAlpha c
+    beginsWithLetter []      = False
 
 -- | Collapse runs of whitespace and trim the ends.
 tidy :: String -> String
