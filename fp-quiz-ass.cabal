@@ -27,6 +27,7 @@ library
   exposed-modules:
       Adts
       Parse
+      RenderMarkdown
       Xml
   other-modules:
       Paths_fp_quiz_ass
