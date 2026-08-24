@@ -36,7 +36,8 @@ documentHeader title questions =
   [ "# " ++ title
   , ""
   , show (length questions) ++ " questions across "
-      ++ show (length categories) ++ " categories."
+      ++ show (length categories) ++ " categories, worth "
+      ++ show (totalMarks questions) ++ " marks in total."
   , ""
   , "**Categories:** " ++ intercalate ", " [ categoryName c | c <- categories ]
   , ""
@@ -55,7 +56,8 @@ questionBlock :: (Int, Question) -> [String]
 questionBlock (number, question) =
   [ "## " ++ show number ++ ". " ++ headingOf question
   , ""
-  , "*Category: " ++ categoryName (questionCategory question) ++ "*"
+  , "*Category: " ++ categoryName (questionCategory question)
+      ++ " | Marks: " ++ show (marksValue (questionMarks question)) ++ "*"
   , ""
   , questionText question
   , ""
