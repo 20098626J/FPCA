@@ -4,6 +4,7 @@ module Main (main) where
 
 import Adts
 import Parse
+import RenderMarkdown
 import System.IO
 
 -- | The quiz files that make up the question bank.
@@ -16,12 +17,30 @@ quizFiles = [ "data/arrays-mcq-.xml"
 main :: IO ()
 main = do
   hSetEncoding stdout utf8
-  putStrLn "Quiz bank importer"
-  putStrLn "=================="
+  putStrLn "Quiz bank"
+  putStrLn "========="
   contents <- readAll quizFiles
   case parseQuizFiles (zip quizFiles contents) of
     Left err        -> putStrLn ("could not build the question bank: " ++ err)
-    Right questions -> reportBank questions
+    Right questions -> writeDocuments questions
+
+-- | Write out the Markdown documents asked for in parts B and C.
+writeDocuments :: [Question] -> IO ()
+writeDocuments questions = do
+  putStrLn (show (length questions) ++ " questions read from "
+              ++ show (length quizFiles) ++ " files.")
+  putStrLn ""
+  writeDocument "questions.md"
+                (renderQuestions "Quiz Bank: Questions" questions)
+  writeDocument "questions-and-answers.md"
+                (renderQuestionsAndAnswers "Quiz Bank: Questions, Answers and Feedback"
+                                           questions)
+
+-- | Write one document and say so.
+writeDocument :: FilePath -> String -> IO ()
+writeDocument path text = do
+  writeUtf8 path text
+  putStrLn ("wrote " ++ path)
 
 -- | Read every quiz file, keeping them in the order they were given.
 readAll :: [FilePath] -> IO [String]
@@ -30,37 +49,6 @@ readAll (path:paths) = do
   contents <- readUtf8 path
   rest     <- readAll paths
   return (contents : rest)
-
--- | Say what ended up in the question bank.
-reportBank :: [Question] -> IO ()
-reportBank questions = do
-  putStrLn ""
-  putStrLn ("questions in the bank: " ++ show (length questions))
-  putStrLn ""
-  putLines [ show number ++ ". " ++ summarise question
-           | (number, question) <- numbered questions ]
-
--- | One line describing a question.
-summarise :: Question -> String
-summarise question =
-  categoryName (questionCategory question) ++ " | " ++ shorten (questionText question)
-
--- | Keep a line short enough to read in a terminal.
-shorten :: String -> String
-shorten text
-  | length text <= 60 = text
-  | otherwise         = take 57 text ++ "..."
-
--- | Pair each item with its position, counting from one.
-numbered :: [a] -> [(Int, a)]
-numbered items = zip [1 .. ] items
-
--- | Write out a list of lines.
-putLines :: [String] -> IO ()
-putLines []           = return ()
-putLines (first:rest) = do
-  putStrLn first
-  putLines rest
 
 -- | Read a file as UTF-8.
 --
@@ -76,3 +64,11 @@ readUtf8 path = do
   handle <- openFile path ReadMode
   hSetEncoding handle utf8
   hGetContents handle
+
+-- | Write a file as UTF-8, for the same reason that files are read as UTF-8.
+writeUtf8 :: FilePath -> String -> IO ()
+writeUtf8 path text = do
+  handle <- openFile path WriteMode
+  hSetEncoding handle utf8
+  hPutStr handle text
+  hClose handle
