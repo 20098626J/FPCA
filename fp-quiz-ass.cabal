@@ -28,6 +28,7 @@ library
       Adts
       Parse
       RenderMarkdown
+      Shuffle
       Xml
   other-modules:
       Paths_fp_quiz_ass
