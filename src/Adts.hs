@@ -9,10 +9,15 @@
 module Adts
   ( Category(..)
   , QuestionType(..)
+  , Marks
+  , mkMarks
+  , marksValue
+  , oneMark
   , Answer(..)
   , Question(..)
   , correctAnswers
   , describeQuestionType
+  , totalMarks
   ) where
 
 -- | The category a question belongs to, for example \"Arrays\".
@@ -31,6 +36,29 @@ data QuestionType = MultiChoice
                   | OtherType String
                   deriving (Eq, Show)
 
+-- | The marks a question is worth.
+--
+-- The constructor is deliberately not exported.  'mkMarks' is the only way
+-- to build one and it refuses anything that is not positive, so the "marks
+-- are positive" invariant holds for every value of this type that exists,
+-- rather than being something a later check has to catch.
+newtype Marks = Marks Int
+  deriving (Eq, Ord, Show)
+
+-- | Build marks, or nothing at all when the number is not positive.
+mkMarks :: Int -> Maybe Marks
+mkMarks number
+  | number > 0 = Just (Marks number)
+  | otherwise  = Nothing
+
+-- | The number of marks.
+marksValue :: Marks -> Int
+marksValue (Marks number) = number
+
+-- | One mark: what a question is worth when it does not say otherwise.
+oneMark :: Marks
+oneMark = Marks 1
+
 -- | One answer option belonging to a multiple choice question.
 data Answer = Answer { answerText      :: String
                      , answerIsCorrect :: Bool
@@ -44,12 +72,17 @@ data Question = Question { questionType     :: QuestionType
                          , questionText     :: String
                          , questionAnswers  :: [Answer]
                          , questionFeedback :: Maybe String
+                         , questionMarks    :: Marks
                          } deriving (Eq, Show)
 
 -- | The answers of a question that are marked as correct.
 correctAnswers :: Question -> [Answer]
 correctAnswers question = [ answer | answer <- questionAnswers question
                                    , answerIsCorrect answer ]
+
+-- | The marks a set of questions comes to in total.
+totalMarks :: [Question] -> Int
+totalMarks questions = sum [ marksValue (questionMarks question) | question <- questions ]
 
 -- | A readable description of a question type, for use in reports.
 describeQuestionType :: QuestionType -> String

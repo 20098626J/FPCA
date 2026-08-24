@@ -101,7 +101,43 @@ buildQuestion defaultCategory typeName element =
                      , questionText     = text
                      , questionAnswers  = answersIn element
                      , questionFeedback = textIn "generalfeedback" element
+                     , questionMarks    = marksIn element
                      }
+
+-- | The marks a question is worth, from its defaultgrade element.
+--
+-- Not every file has one: methods-and-driver.xml has no defaultgrade at
+-- all, so a question that does not say what it is worth is worth one mark.
+-- A grade that is missing, unreadable or not positive is treated the same
+-- way, because a question in the bank always has to be worth something.
+marksIn :: Xml -> Marks
+marksIn element =
+  case contentOf "defaultgrade" element of
+    Nothing    -> oneMark
+    Just given ->
+      case mkMarks (readGrade given) of
+        Nothing    -> oneMark
+        Just marks -> marks
+
+-- | Read a grade, which Moodle may write as @1@ or as @1.0000000@.
+readGrade :: String -> Int
+readGrade text =
+  case reads text of
+    [(value, leftover)] | all isSpace leftover -> round (value :: Double)
+    _                                          -> 0
+
+-- | The text directly inside a named child element.
+--
+-- This is not the same as 'textIn': a defaultgrade holds its number
+-- directly, whereas a questiontext wraps its words in a text element.
+contentOf :: String -> Xml -> Maybe String
+contentOf childName element =
+  case firstChildNamed childName element of
+    Nothing    -> Nothing
+    Just child ->
+      case tidy (textOf child) of
+        []      -> Nothing
+        content -> Just content
 
 -- | The category rule from the brief: a question that names its own
 -- category uses that one, and a question that does not inherit the default
