@@ -6,6 +6,7 @@ import Adts
 import Parse
 import RenderMarkdown
 import Shuffle
+import Validate
 import System.Environment (getArgs)
 import System.IO
 
@@ -31,7 +32,26 @@ main = do
   contents <- readAll quizFiles
   case parseQuizFiles (zip quizFiles contents) of
     Left err        -> putStrLn ("could not build the question bank: " ++ err)
-    Right questions -> writeDocuments (seedFrom arguments) questions
+    Right questions -> do
+      let (problems, sound) = checkBank questions
+      reportProblems problems
+      writeDocuments (seedFrom arguments) sound
+
+-- | Say which questions failed the bank invariants.  A question that fails
+-- is left out of the bank rather than being written into a paper.
+reportProblems :: [Problem] -> IO ()
+reportProblems [] = putStrLn "all questions passed the bank invariants."
+reportProblems problems = do
+  putStrLn (show (length problems)
+              ++ " question(s) failed the bank invariants and were left out:")
+  putLines [ "  - " ++ describeProblem problem | problem <- problems ]
+
+-- | Write out a list of lines.
+putLines :: [String] -> IO ()
+putLines []             = return ()
+putLines (first : rest) = do
+  putStrLn first
+  putLines rest
 
 -- | The seed to shuffle with: the first argument when one is given and can
 -- be read as a number, and the default otherwise.

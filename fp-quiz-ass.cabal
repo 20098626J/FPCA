@@ -29,6 +29,7 @@ library
       Parse
       RenderMarkdown
       Shuffle
+      Validate
       Xml
   other-modules:
       Paths_fp_quiz_ass
