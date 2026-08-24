@@ -5,6 +5,8 @@ module Main (main) where
 import Adts
 import Parse
 import RenderMarkdown
+import Shuffle
+import System.Environment (getArgs)
 import System.IO
 
 -- | The quiz files that make up the question bank.
@@ -14,27 +16,57 @@ quizFiles = [ "data/arrays-mcq-.xml"
             , "data/introduction-and-loops.xml"
             ]
 
+-- | The seed used when none is given on the command line.  Having a
+-- default keeps a plain run repeatable, which matters when the generated
+-- papers are handed in.
+defaultSeed :: Seed
+defaultSeed = 20098626
+
 main :: IO ()
 main = do
   hSetEncoding stdout utf8
+  arguments <- getArgs
   putStrLn "Quiz bank"
   putStrLn "========="
   contents <- readAll quizFiles
   case parseQuizFiles (zip quizFiles contents) of
     Left err        -> putStrLn ("could not build the question bank: " ++ err)
-    Right questions -> writeDocuments questions
+    Right questions -> writeDocuments (seedFrom arguments) questions
 
--- | Write out the Markdown documents asked for in parts B and C.
-writeDocuments :: [Question] -> IO ()
-writeDocuments questions = do
+-- | The seed to shuffle with: the first argument when one is given and can
+-- be read as a number, and the default otherwise.
+seedFrom :: [String] -> Seed
+seedFrom []          = defaultSeed
+seedFrom (given : _) =
+  case reads given of
+    [(value, "")] -> value
+    _             -> defaultSeed
+
+-- | Write out the Markdown documents asked for in parts B, C and D.
+writeDocuments :: Seed -> [Question] -> IO ()
+writeDocuments seed questions = do
   putStrLn (show (length questions) ++ " questions read from "
               ++ show (length quizFiles) ++ " files.")
+  putStrLn ("shuffling with seed " ++ show seed
+              ++ " (pass a different one as an argument)")
   putStrLn ""
   writeDocument "questions.md"
                 (renderQuestions "Quiz Bank: Questions" questions)
   writeDocument "questions-and-answers.md"
                 (renderQuestionsAndAnswers "Quiz Bank: Questions, Answers and Feedback"
                                            questions)
+  writeShuffled seed questions 5
+  writeShuffled seed questions 10
+  writeShuffled seed questions (length questions)
+
+-- | Write one shuffled set of the given size.
+writeShuffled :: Seed -> [Question] -> Int -> IO ()
+writeShuffled seed questions count =
+  writeDocument ("shuffled-" ++ show count ++ ".md")
+                (renderQuestions title (shuffleTake seed count questions))
+  where
+    title = "Shuffled Question Set: " ++ show count ++ " questions (seed "
+              ++ show seed ++ ")"
 
 -- | Write one document and say so.
 writeDocument :: FilePath -> String -> IO ()
