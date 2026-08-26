@@ -3,6 +3,7 @@
 module Main (main) where
 
 import Adts
+import GeneratePaper
 import Parse
 import RenderMarkdown
 import Shuffle
@@ -16,6 +17,28 @@ quizFiles = [ "data/arrays-mcq-.xml"
             , "data/methods-and-driver.xml"
             , "data/introduction-and-loops.xml"
             ]
+
+-- | The paper a lecturer has asked for.
+--
+-- The brief gives an example asking for a least number of questions from
+-- each of several categories and a total of 20 marks.  This is that
+-- example, using the categories this question bank actually holds.
+wantedPaper :: PaperSpec
+wantedPaper = PaperSpec
+  { specMinimums   = [ (Category "Arrays/Primitive_and_Object_Arrays", 2)
+                     , (Category "Methods and Driver", 3)
+                     , (Category "Loops", 2)
+                     ]
+  , specTotalMarks = 20
+  }
+
+-- | A specification the bank cannot satisfy, kept so that a run shows what
+-- failing clearly looks like as well as what succeeding looks like.
+impossiblePaper :: PaperSpec
+impossiblePaper = PaperSpec
+  { specMinimums   = [ (Category "Loops", 10) ]
+  , specTotalMarks = 20
+  }
 
 -- | The seed used when none is given on the command line.  Having a
 -- default keeps a plain run repeatable, which matters when the generated
@@ -75,9 +98,32 @@ writeDocuments seed questions = do
   writeDocument "questions-and-answers.md"
                 (renderQuestionsAndAnswers "Quiz Bank: Questions, Answers and Feedback"
                                            questions)
+  writePaper seed wantedPaper questions
+  reportImpossible seed questions
   writeShuffled seed questions 5
   writeShuffled seed questions 10
   writeShuffled seed questions (length questions)
+
+-- | Generate a paper meeting the specification and write it out.
+writePaper :: Seed -> PaperSpec -> [Question] -> IO ()
+writePaper seed spec questions =
+  case generatePaper seed spec questions of
+    Left err    -> putStrLn ("could not generate the paper: " ++ describePaperError err)
+    Right paper ->
+      writeDocument "paper.md"
+                    (renderQuestions ("Generated Paper: " ++ show (specTotalMarks spec)
+                                        ++ " marks (seed " ++ show seed ++ ")")
+                                     (paperQuestions paper))
+
+-- | Show what happens when a specification cannot be met.
+reportImpossible :: Seed -> [Question] -> IO ()
+reportImpossible seed questions = do
+  putStrLn ""
+  putStrLn "asking for a paper the bank cannot provide:"
+  case generatePaper seed impossiblePaper questions of
+    Left err -> putStrLn ("  refused: " ++ describePaperError err)
+    Right _  -> putStrLn "  unexpectedly succeeded"
+  putStrLn ""
 
 -- | Write one shuffled set of the given size.
 writeShuffled :: Seed -> [Question] -> Int -> IO ()
