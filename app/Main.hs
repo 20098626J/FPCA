@@ -109,11 +109,38 @@ writePaper :: Seed -> PaperSpec -> [Question] -> IO ()
 writePaper seed spec questions =
   case generatePaper seed spec questions of
     Left err    -> putStrLn ("could not generate the paper: " ++ describePaperError err)
-    Right paper ->
+    Right paper -> do
+      checkGeneratedPaper (paperQuestions paper)
       writeDocument "paper.md"
                     (renderQuestions ("Generated Paper: " ++ show (specTotalMarks spec)
                                         ++ " marks (seed " ++ show seed ++ ")")
                                      (paperQuestions paper))
+
+-- | Check the generated paper, not just the bank it came from.
+--
+-- Generation should make both of these impossible, which is exactly why
+-- they are worth checking: this is what would notice if that ever stopped
+-- being true.
+checkGeneratedPaper :: [Question] -> IO ()
+checkGeneratedPaper questions
+  | null problems && null repeats =
+      putStrLn ("generated paper passed its checks: " ++ show (length questions)
+                  ++ " questions, " ++ show (totalMarks questions)
+                  ++ " marks, no repeated questions")
+  | otherwise = do
+      putStrLn "the generated paper failed its checks:"
+      putLines [ "  - " ++ describeProblem problem | problem <- problems ]
+      putLines [ "  - asked more than once: " ++ shorten (questionText question)
+               | question <- repeats ]
+  where
+    problems = fst (checkBank questions)
+    repeats  = repeatedQuestions questions
+
+-- | Keep a line short enough to read.
+shorten :: String -> String
+shorten text
+  | length text <= 50 = text
+  | otherwise         = take 47 text ++ "..."
 
 -- | Show what happens when a specification cannot be met.
 reportImpossible :: Seed -> [Question] -> IO ()

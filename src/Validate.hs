@@ -17,18 +17,28 @@ module Validate
   , Problem(..)
   , faultsIn
   , checkBank
+  , repeatedQuestions
   , describeFault
   , describeProblem
   ) where
 
 import Adts
 import Data.Either (partitionEithers)
-import Data.List (intercalate)
+import Data.List (intercalate, nub)
 
 -- | Something that can be wrong with a question.
+--
+-- The first three are the invariants the brief lists.  The last three are
+-- ones of our own: an answer option with nothing written on it, the same
+-- option offered twice, and a category whose name is empty.  None of these
+-- stops the program running, but each of them makes for a paper that a
+-- student could not sensibly sit.
 data Fault = NoQuestionText
            | NoAnswers
            | NoCorrectAnswer
+           | BlankAnswerText
+           | DuplicateAnswerText
+           | BlankCategory
            deriving (Eq, Show)
 
 -- | A question together with everything found wrong with it.
@@ -41,16 +51,37 @@ data Problem = Problem { problemFaults   :: [Fault]
 -- The two answer rules only apply to multiple choice questions, because a
 -- question of another type is not expected to carry answer options.
 faultsIn :: Question -> [Fault]
-faultsIn question = textFaults ++ answerFaults
+faultsIn question = textFaults ++ categoryFaults ++ answerFaults
   where
+    answers = questionAnswers question
+    texts   = [ answerText answer | answer <- answers ]
+
     textFaults
       | null (questionText question) = [NoQuestionText]
       | otherwise                    = []
+
+    categoryFaults
+      | null (categoryName (questionCategory question)) = [BlankCategory]
+      | otherwise                                       = []
+
+    -- A question of another type is not expected to carry answer options,
+    -- so the answer rules only apply to multiple choice questions.
     answerFaults
       | questionType question /= MultiChoice = []
-      | null (questionAnswers question)      = [NoAnswers]
-      | null (correctAnswers question)       = [NoCorrectAnswer]
-      | otherwise                            = []
+      | null answers                         = [NoAnswers]
+      | otherwise = correctnessFault ++ blankFault ++ duplicateFault
+
+    correctnessFault
+      | null (correctAnswers question) = [NoCorrectAnswer]
+      | otherwise                      = []
+
+    blankFault
+      | any null texts = [BlankAnswerText]
+      | otherwise      = []
+
+    duplicateFault
+      | length (nub texts) /= length texts = [DuplicateAnswerText]
+      | otherwise                          = []
 
 -- | Split a bank into the problems found and the questions that are sound.
 --
@@ -64,11 +95,27 @@ checkBank questions = partitionEithers [ check question | question <- questions 
         []     -> Right question
         faults -> Left (Problem faults question)
 
+-- | Questions that turn up more than once in a list.
+--
+-- This is a rule about a generated paper rather than about the bank: the
+-- same question must not be asked twice on one paper.  Checking the output
+-- as well as the input is the point - generation is supposed to make this
+-- impossible, and this is what would notice if it ever stopped being true.
+repeatedQuestions :: [Question] -> [Question]
+repeatedQuestions questions =
+  nub [ question | question <- questions, appearances question > 1 ]
+  where
+    appearances question =
+      length [ other | other <- questions, other == question ]
+
 -- | A fault in words.
 describeFault :: Fault -> String
-describeFault NoQuestionText  = "it has no question text"
-describeFault NoAnswers       = "it is multiple choice but has no answers"
-describeFault NoCorrectAnswer = "it is multiple choice but no answer is correct"
+describeFault NoQuestionText      = "it has no question text"
+describeFault NoAnswers           = "it is multiple choice but has no answers"
+describeFault NoCorrectAnswer     = "it is multiple choice but no answer is correct"
+describeFault BlankAnswerText     = "one of its answer options is blank"
+describeFault DuplicateAnswerText = "the same answer option is offered twice"
+describeFault BlankCategory       = "its category has no name"
 
 -- | A problem in words, naming the question it belongs to.
 describeProblem :: Problem -> String
